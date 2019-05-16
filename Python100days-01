@@ -1,0 +1,444 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Day 03 Loop\n",
+    "## 1. for-in loop"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "5050\n"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"\n",
+    "Sum of 1 to 100\n",
+    "\"\"\"\n",
+    "sum = 0\n",
+    "for x in range(1,101): # in python, you use 101 because it starts from 0.\n",
+    "    sum +=x\n",
+    "print(sum)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Side Note: range() is a built-in function of python. The range() function generates the integer numbers between the given start integer to the stop integer, which is generally used to iterate over with for Loop.\n",
+    "- range(101): 0-100\n",
+    "- range(1, 100): 1-99\n",
+    "- range(1, 100, 2): 1, 3, 5, ..., 99"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2550\n"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"\n",
+    "Sum of all even numbers between 1-100\n",
+    "\"\"\"\n",
+    "sum = 0\n",
+    "for x in range(2, 101, 2):\n",
+    "    sum += x\n",
+    "print(sum)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2550\n"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"\n",
+    "Sum of all even numbers between 1-100\n",
+    "\"\"\"\n",
+    "sum = 0\n",
+    "for x in range(2, 101, 2):\n",
+    "    if x % 2 == 0:\n",
+    "        sum += x\n",
+    "print(sum)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. While loop"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Your guess = 8\n",
+      "Too little\n",
+      "Your guess = 10\n",
+      "You have tried 1 times\n",
+      "Too little\n",
+      "Your guess = 50\n",
+      "You have tried 2 times\n",
+      "Too little\n",
+      "Your guess = 80\n",
+      "You have tried 3 times\n",
+      "Too little\n",
+      "Your guess = 90\n",
+      "You have tried 4 times\n",
+      "Too large\n",
+      "Your guess = 85\n",
+      "You have tried 5 times\n",
+      "Too large\n",
+      "Your guess = 82\n",
+      "You have tried 6 times\n",
+      "Too large\n",
+      "Your guess = 81\n",
+      "You have tried 7 times\n",
+      "You have tried 7 times\n",
+      "Success\n"
+     ]
+    }
+   ],
+   "source": [
+    "import random\n",
+    "answer = random.randint(1, 100) \n",
+    "number = int(input(\"Your guess = \"))\n",
+    "count = 0\n",
+    "while answer!=number:\n",
+    "    if number < answer:\n",
+    "        print(\"Too little\")\n",
+    "    else:\n",
+    "        print(\"Too large\")\n",
+    "    count +=1\n",
+    "    number = int(input(\"Your guess = \"))\n",
+    "    print(\"You have tried %d times\" % (count))\n",
+    "print(\"You have tried %d times\" % (count))\n",
+    "print(\"Success\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notes：\n",
+    "- random.randint(a, b) Return a random integer N such that a <= N <= b.\n",
+    "- 上面的代码中使用了break关键字来提前终止循环，需要注意的是break只能终止它所在的那个循环，这一点在使用嵌套的循环结构（下面会讲到）需要引起注意。除了break之外，还有另一个关键字是continue，它可以用来放弃本次循环后续的代码直接让循环进入下一轮"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1 * 1 = 1\n",
+      "2 * 1 = 2\n",
+      "2 * 2 = 4\n",
+      "3 * 1 = 3\n",
+      "3 * 2 = 6\n",
+      "3 * 3 = 9\n",
+      "4 * 1 = 4\n",
+      "4 * 2 = 8\n",
+      "4 * 3 = 12\n",
+      "4 * 4 = 16\n",
+      "5 * 1 = 5\n",
+      "5 * 2 = 10\n",
+      "5 * 3 = 15\n",
+      "5 * 4 = 20\n",
+      "5 * 5 = 25\n",
+      "6 * 1 = 6\n",
+      "6 * 2 = 12\n",
+      "6 * 3 = 18\n",
+      "6 * 4 = 24\n",
+      "6 * 5 = 30\n",
+      "6 * 6 = 36\n",
+      "7 * 1 = 7\n",
+      "7 * 2 = 14\n",
+      "7 * 3 = 21\n",
+      "7 * 4 = 28\n",
+      "7 * 5 = 35\n",
+      "7 * 6 = 42\n",
+      "7 * 7 = 49\n",
+      "8 * 1 = 8\n",
+      "8 * 2 = 16\n",
+      "8 * 3 = 24\n",
+      "8 * 4 = 32\n",
+      "8 * 5 = 40\n",
+      "8 * 6 = 48\n",
+      "8 * 7 = 56\n",
+      "8 * 8 = 64\n",
+      "9 * 1 = 9\n",
+      "9 * 2 = 18\n",
+      "9 * 3 = 27\n",
+      "9 * 4 = 36\n",
+      "9 * 5 = 45\n",
+      "9 * 6 = 54\n",
+      "9 * 7 = 63\n",
+      "9 * 8 = 72\n",
+      "9 * 9 = 81\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(1,10):\n",
+    "    for j in range(1, i+1):\n",
+    "        print('%d * %d = %d' % (i,j,i*j))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1*1=1 \n",
+      "2*1=2 2*2=4 \n",
+      "3*1=3 3*2=6 3*3=9 \n",
+      "4*1=4 4*2=8 4*3=12 4*4=16 \n",
+      "5*1=5 5*2=10 5*3=15 5*4=20 5*5=25 \n",
+      "6*1=6 6*2=12 6*3=18 6*4=24 6*5=30 6*6=36 \n",
+      "7*1=7 7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 \n",
+      "8*1=8 8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 \n",
+      "9*1=9 9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81 \n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(1, 10):\n",
+    "    for j in range(1, i + 1):\n",
+    "        print('%d*%d=%d' % (i, j, i * j), end='\\t')\n",
+    "    print()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ? Why there is difference between mine and the answer\n",
+    "Python print in default end with a new line. But the option \"end\" can make it customized. '\\t' means end with a tab"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Practice\n",
+    "### 3.1 输入一个数判断是不是素数。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Please input a positive integer:6\n",
+      "Not a prime number.\n"
+     ]
+    }
+   ],
+   "source": [
+    "from math import sqrt\n",
+    "num = int(input(\"Please input a positive integer:\"))\n",
+    "end = int (sqrt(num))\n",
+    "is_prime=True\n",
+    "for x in range(2, num):\n",
+    "    if num % x == 0:\n",
+    "        print(\"Not a prime number.\")\n",
+    "        is_prime = False\n",
+    "        break\n",
+    "if is_prime and num != 1:\n",
+    "    print(\"It is a prime number\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 输入两个正整数，计算最大公约数和最小公倍数。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "x = 2\n",
+      "y = 4\n",
+      "2\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = int(input('x = '))\n",
+    "y = int(input('y = '))\n",
+    "gcd = 0\n",
+    "lcm = 0\n",
+    "for i in range(1, x*y+1):\n",
+    "    if x % i == 0 and y % i == 0:\n",
+    "        gcd=i\n",
+    "print(gcd)\n",
+    "for i in range(1, x*y+1):\n",
+    "    if i % x == 0 and i % y == 0:\n",
+    "        lcm=i\n",
+    "        break\n",
+    "print(lcm)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = int(input('x = '))\n",
+    "y = int(input('y = '))\n",
+    "if x > y:\n",
+    "    x, y = y, x\n",
+    "for factor in range(x, 0, -1):\n",
+    "    if x % factor == 0 and y % factor == 0:\n",
+    "        print('%d和%d的最大公约数是%d' % (x, y, factor))\n",
+    "        print('%d和%d的最小公倍数是%d' % (x, y, x * y // factor))\n",
+    "        break"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 打印各种三角形图案"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "How many rows?5\n",
+      "*\n",
+      "**\n",
+      "***\n",
+      "****\n",
+      "*****\n",
+      "    *\n",
+      "   **\n",
+      "  ***\n",
+      " ****\n",
+      "*****\n",
+      "    *\n",
+      "   ***\n",
+      "  *****\n",
+      " *******\n",
+      "*********\n"
+     ]
+    }
+   ],
+   "source": [
+    "row = int(input(\"How many rows?\"))\n",
+    "for i in range(row):\n",
+    "    for _ in range(i + 1):\n",
+    "        print('*', end='')\n",
+    "    print()\n",
+    "for i in range(row):\n",
+    "    for j in range(row):\n",
+    "        if j < row - i - 1:\n",
+    "            print(' ', end='')\n",
+    "        else:\n",
+    "            print('*', end='')\n",
+    "    print()\n",
+    "\n",
+    "for i in range(row):\n",
+    "    for _ in range(row - i - 1):\n",
+    "        print(' ', end='')\n",
+    "    for _ in range(2 * i + 1):\n",
+    "        print('*', end='')\n",
+    "    print()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 任务： 搞清print换行缩进法则"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
